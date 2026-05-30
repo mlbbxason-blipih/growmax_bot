@@ -2,7 +2,7 @@
 import os
 import logging
 from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+from telegram.ext import Application, CommandHandler, MessageHandler, filters
 from openai import OpenAI
 
 # Enable logging
@@ -22,20 +22,20 @@ openai_client = OpenAI(api_key=OPENAI_API_KEY)
 SYSTEM_PROMPT = (
     "You are a knowledgeable, warm, polite, and friendly sales assistant for height growth supplements. "
     "Your goal is to answer customer questions about height growth products intelligently, factually, and with care. "
-    "Always maintain a warm and polite tone, using phrases like 'မဂ္ဂလာပါ' (Mingalabar) or 'ဟုတ်ကဲ့' (Yes, politely) when appropriate. "
+    "Always maintain a warm and polite tone, using phrases like \'မဂ္ဂလာပါ\' (Mingalabar) or \'ဟုတ်ကဲ့\' (Yes, politely) when appropriate. "
     "Provide helpful and accurate information about height growth, the product, and its benefits. "
     "If a question is outside the scope of height growth supplements, politely redirect the conversation back to the product or general well-being."
 )
 
 # Handler for /start, /hi, /hello commands and general greetings
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def start(update: Update, context) -> None:
     user = update.effective_user
     await update.message.reply_html(
         f"မဂ္ဂလာပါ {user.mention_html()}! ဘာများကူညီပေးရမလဲ❤️",
     )
 
 # Handler for general messages, using OpenAI for intelligent responses
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def handle_message(update: Update, context) -> None:
     user_message = update.message.text
     logger.info(f"User message: {user_message}")
 
@@ -58,7 +58,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         )
 
 def main() -> None:
-    # Create the Application and pass it your bot's token.
+    # Create the Application and pass it your bot\'s token.
     application = Application.builder().token(BOT_TOKEN).build()
 
     # On different commands - answer in Telegram
