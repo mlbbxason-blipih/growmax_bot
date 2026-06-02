@@ -71,17 +71,23 @@ def get_corrections_prompt():
     return corrections_text
 
 
-# System prompt - GrowMax intelligent height growth consultant
-SYSTEM_PROMPT = """သင်သည် GrowMax အရပ်ရှည်ဆေး ရဲ့ sales consultant ဖြစ်ပါတယ်။ Myanmar လူငယ်တစ်ယောက်လို casual ပြောပါ။
+# System prompt - Intelligent height growth consultant
+SYSTEM_PROMPT = """သင်သည် အရပ်ရှည်ခြင်းနဲ့ ပတ်သက်တဲ့ intelligent consultant ဖြစ်ပါတယ်။ Myanmar လူငယ်တစ်ယောက်လို casual ပြောပါ။
 
 အရေးကြီးတဲ့ စည်းမျဉ်းများ:
 - လူတစ်ယောက်လို natural ပြောပါ။ Bot လို မဖြစ်ပါစေနဲ့
-- စာတိုတိုပဲ ဖြေပါ။ မေးတာထက် အနည်းငယ်ပဲ ပိုဖြေပါ
 - "ဟုတ်ကဲ့", "အင်း", "ဟာ", "ပေါ့" စတဲ့ casual words သုံးပါ
 - emoji တခါတလေ ထည့်ပါ (😊💪👍✨) ဒါပေမယ့် အများကြီး မထည့်ပါနဲ့
 - "bot လား" မေးရင် "bot မဟုတ်ပါဘူး GrowMax team ကပါ" ဆိုပြီး ဖြေပါ
 
-GrowMax Product Knowledge:
+အရေးကြီးဆုံး - Intelligent Responses:
+- အရပ်ရှည်ခြင်းနဲ့ ပတ်သက်တဲ့ မေးခွန်းတွေကို သိပ္ပံအချက်အလက်ကျကျ ရှင်းပြပါ
+- Growth plates, hormones, genetics, nutrition, exercise science စတာတွေကို detail ကျကျ ဖြေပါ
+- ရှည်ရှည်ဖြေရင် ဖြေပါ - customer သိချင်တာကို သဘောကျအောင် ပြည့်ပြည့်စုံစုံ ဖြေပါ
+- Scientific facts, research findings, medical knowledge တွေ ထည့်ပြီး ဖြေပါ
+- Customer ရဲ့ အသက်၊ အခြေအနေ ပေါ်မူတည်ပြီး personalized advice ပေးပါ
+
+GrowMax Product Knowledge (မေးမှပဲ ဖြေပါ - အတင်းမရောင်းပါနဲ့):
 - GrowMax အရပ်ရှည်ဆေး - Advanced Height Growth supplement
 - အသက် 13-25 အထိ သောက်လို့ရတယ်
 - Ingredients: Zinc, Almond Powder, Moringa Powder
@@ -111,15 +117,24 @@ Results:
 
 Order: @Moring58 မှာ နာမည်၊ ဖုန်းနံပါတ်၊ နေရပ်လိပ်စာ ပေးပြီး မှာယူနိုင်ပါတယ်
 
-အရပ်ရှည်ဖို့ Guide Knowledge:
-- Exercise: stretching, hanging bar, swimming, basketball, skipping rope
-- Diet: calcium ပါတဲ့ အစားအစာ (နို့, ဒိန်ချဉ်, ငါး), protein, vitamins
-- Sleep: ည 10 နာရီမတိုင်ခင် အိပ်ပါ (growth hormone ည 11-2 ထွက်တယ်)
-- Posture: ကျောမတ်မတ်ထိုင်ပါ, ဖုန်းကြည့်ရင် လည်ပင်းမငုံ့ပါနဲ့
-- GrowMax ဆေးနဲ့ exercise, diet, sleep တွဲလုပ်ရင် ပိုထိရောက်တယ်
+အရပ်ရှည်ဖို့ Scientific Knowledge (ဒါတွေကို detail ကျကျ ဖြေပေးပါ):
+- Growth Plates: Epiphyseal plates - အရိုးရဲ့ အဆုံးမှာရှိတဲ့ cartilage zone, ဒါ close မဖြစ်သေးရင် အရပ်ရှည်နိုင်သေးတယ်
+- Growth Hormone (GH): Pituitary gland ကထုတ်တယ်, ည 10pm-2am deep sleep အချိန် အများဆုံးထွက်တယ်
+- IGF-1: Insulin-like Growth Factor - liver ကထုတ်တယ်, GH နဲ့ တွဲအလုပ်လုပ်တယ်
+- Nutrition: Calcium (အရိုးတည်ဆောက်), Zinc (cell division & growth), Protein (amino acids for tissue growth), Vitamin D (calcium absorption)
+- Exercise: High-intensity exercises stimulate GH release, Stretching decompresses spine, Swimming reduces gravity on spine
+- Sleep: 8-10 hours needed for teens, Growth hormone 70% ည deep sleep မှာ ထွက်တယ်
+- Genetics: 60-80% determine height, but 20-40% is environment (nutrition, sleep, exercise)
+- Posture: Poor posture can reduce apparent height by 1-2 inches
+- Age factors: Girls growth plates close around 14-16, Boys around 16-18 (varies)
 
-Customer ဝယ်ချင်လာအောင် persuasive ဖြစ်ပါ။ ဒါပေမယ့် pushy မဖြစ်ပါစေနဲ့။
-"ဝယ်ချင်ပါတယ်", "မှာချင်", "order" စတာတွေ ပြောရင် @Moring58 ကို direct လုပ်ပေးပါ။
+အရေးကြီး - Sales approach:
+- GrowMax ကို အတင်းမရောင်းပါနဲ့
+- Customer က product အကြောင်း မေးမှပဲ ဖြေပါ
+- အရပ်ရှည်ဖို့ advice ပေးတဲ့အခါ GrowMax ကို subtle ပဲ mention လုပ်ပါ (သို့) မ mention ပဲ ထားပါ
+- Customer ကိုယ်တိုင် စိတ်ဝင်စားလာမှ product details ပေးပါ
+- Helpful, knowledgeable friend တစ်ယောက်လို ဖြစ်ပါ - salesperson မဖြစ်ပါနဲ့
+- "ဝယ်ချင်ပါတယ်", "မှာချင်", "order" စတာတွေ ပြောရင် @Moring58 ကို direct လုပ်ပေးပါ
 """
 
 # Keywords for triggering specific images
@@ -213,7 +228,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await update.message.reply_text("ဟလို...ဘာများကူညီပေးရမလဲ 😊")
         return
     elif is_greeting and user_id in greeted_users:
-        # Already greeted, just answer naturally without greeting again
         pass
 
     # --- CORRECTION DETECTION (before other handlers) ---
@@ -234,7 +248,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     # Check for price keywords
     if any(kw in user_message for kw in PRICE_KEYWORDS):
-        # Send price image
         price_path = ASSETS_DIR / "price.jpg"
         promo_path = ASSETS_DIR / "promotion.jpg"
         if price_path.exists():
@@ -267,8 +280,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
         await update.message.reply_text(
             "မှာယူချင်ရင် @Moring58 မှာ နာမည်၊ ဖုန်းနံပါတ်၊ နေရပ်လိပ်စာ ပေးပြီး မှာယူနိုင်ပါတယ် 💪"
         )
-        # Send a sticker occasionally
-        await maybe_send_sticker(context, update.effective_chat.id, "happy")
         return
 
     # Use AI for general conversation (with corrections injected into system prompt)
@@ -280,24 +291,16 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                 {"role": "system", "content": full_prompt},
                 {"role": "user", "content": user_message}
             ],
-            max_tokens=200,
+            max_tokens=800,
             temperature=0.8,
         )
         bot_reply = response.choices[0].message.content.strip()
         await update.message.reply_text(bot_reply)
 
-        # Maybe send feedback images if context is about results/trust
-        result_keywords = ["ရလဒ်", "ထိရောက်", "ရှည်လာ", "အလုပ်လုပ်", "ယုံ", "သက်သေ", "result", "တကယ်ရ", "ဟုတ်လား"]
+        # Send feedback images ONLY when customer specifically asks about results/proof
+        result_keywords = ["ရလဒ်", "သက်သေ", "result", "တကယ်ရ", "proof", "feedback"]
         if any(kw in user_message for kw in result_keywords):
             await send_feedback_images(context, update.effective_chat.id)
-        else:
-            # Randomly send feedback for trust building (10% chance)
-            if random.random() < 0.10:
-                await asyncio.sleep(1)
-                await send_feedback_images(context, update.effective_chat.id)
-
-        # Maybe send sticker (30% chance)
-        await maybe_send_sticker(context, update.effective_chat.id, "general")
 
     except Exception as e:
         logger.error(f"AI Error: {e}")
@@ -307,9 +310,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 
 async def send_feedback_images(context, chat_id):
-    """Send customer feedback images for trust building."""
+    """Send customer feedback images only when asked about results/proof."""
     feedback_files = ["feedback1.jpg", "feedback2.jpg", "feedback3.jpg"]
-    # Send 1-2 random feedback images
     selected = random.sample(feedback_files, min(2, len(feedback_files)))
     for fname in selected:
         fpath = ASSETS_DIR / fname
@@ -320,27 +322,6 @@ async def send_feedback_images(context, chat_id):
                 caption="Customer feedback 💪✨"
             )
             await asyncio.sleep(0.5)
-
-
-async def maybe_send_sticker(context, chat_id, mood="general"):
-    """Maybe send a video sticker based on context. Not every time."""
-    # 30% chance to send sticker
-    if random.random() > 0.30:
-        return
-
-    sticker_files = ["sticker1.mp4", "sticker2.mp4"]
-    sticker_file = random.choice(sticker_files)
-    sticker_path = ASSETS_DIR / sticker_file
-
-    if sticker_path.exists():
-        try:
-            await asyncio.sleep(0.5)
-            await context.bot.send_animation(
-                chat_id=chat_id,
-                animation=open(sticker_path, 'rb')
-            )
-        except Exception as e:
-            logger.warning(f"Failed to send sticker: {e}")
 
 
 def main() -> None:
