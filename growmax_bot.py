@@ -7,6 +7,7 @@ from pathlib import Path
 from telegram import Update
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 from openai import OpenAI
+from knowledge_base import KNOWLEDGE_BASE
 
 # Enable logging
 logging.basicConfig(
@@ -117,16 +118,8 @@ Results:
 
 Order: @Moring58 မှာ နာမည်၊ ဖုန်းနံပါတ်၊ နေရပ်လိပ်စာ ပေးပြီး မှာယူနိုင်ပါတယ်
 
-အရပ်ရှည်ဖို့ Scientific Knowledge (ဒါတွေကို detail ကျကျ ဖြေပေးပါ):
-- Growth Plates: Epiphyseal plates - အရိုးရဲ့ အဆုံးမှာရှိတဲ့ cartilage zone, ဒါ close မဖြစ်သေးရင် အရပ်ရှည်နိုင်သေးတယ်
-- Growth Hormone (GH): Pituitary gland ကထုတ်တယ်, ည 10pm-2am deep sleep အချိန် အများဆုံးထွက်တယ်
-- IGF-1: Insulin-like Growth Factor - liver ကထုတ်တယ်, GH နဲ့ တွဲအလုပ်လုပ်တယ်
-- Nutrition: Calcium (အရိုးတည်ဆောက်), Zinc (cell division & growth), Protein (amino acids for tissue growth), Vitamin D (calcium absorption)
-- Exercise: High-intensity exercises stimulate GH release, Stretching decompresses spine, Swimming reduces gravity on spine
-- Sleep: 8-10 hours needed for teens, Growth hormone 70% ည deep sleep မှာ ထွက်တယ်
-- Genetics: 60-80% determine height, but 20-40% is environment (nutrition, sleep, exercise)
-- Posture: Poor posture can reduce apparent height by 1-2 inches
-- Age factors: Girls growth plates close around 14-16, Boys around 16-18 (varies)
+အရပ်ရှည်ဖို့ Scientific Knowledge:
+""" + KNOWLEDGE_BASE + """
 
 အရေးကြီး - Sales approach:
 - GrowMax ကို အတင်းမရောင်းပါနဲ့
@@ -291,7 +284,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                 {"role": "system", "content": full_prompt},
                 {"role": "user", "content": user_message}
             ],
-            max_tokens=800,
+            max_tokens=1500,
             temperature=0.8,
         )
         bot_reply = response.choices[0].message.content.strip()
